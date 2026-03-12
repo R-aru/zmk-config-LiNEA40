@@ -8,9 +8,6 @@
 #     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
 #     artifact-name: corne_central
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
-
 include:
   - board: seeeduino_xiao_ble
     shield: LiNEA40_left rgbled_adapter
