@@ -1,4 +1,5 @@
 #include "LiNEA40.dtsi"
+
 &default_transform {
     col-offset = <6>;
 };
@@ -12,15 +13,6 @@
         , <&gpio0 10 GPIO_ACTIVE_HIGH>  //col4-NFC2
         ;
 };
-
-/ {
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-
-    };
-};
-
 
 &pinctrl {
     spi0_default: spi0_default {
@@ -53,18 +45,24 @@
 
     trackball: trackball@0 {
         status = "okay";
-        compatible = "pixart,pmw3610";
+        /* cormoran版モジュールの標準的な定義名 */
+        compatible = "pixart,pmw3610"; 
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&xiao_d 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; //MOT-D6
-        automouse-layer = <3>;
-        snipe-layers = <9>;
-        scroll-layers = <8>;
-        //scroll-layers = <4 5 6>;
-    };
+
+        /* 軸の反転（必要に応じてコメントアウトを解除） */
+        invert-x;
+        invert-y;
+    }
 };
 
+/* 入力リスナーの設定 */
 &trackball_listener {
     status = "okay";
     device = <&trackball>;
 };
+
+/* * DYA Studio / Runtime Input Processor 向けの追加設定 
+ * 必要に応じてここにレイヤー切り替え等のプロセッサを記述します
+ */
