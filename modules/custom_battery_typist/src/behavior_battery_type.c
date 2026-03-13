@@ -11,7 +11,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-#include <zephyr/drivers/behavior.h>
+#include <zmk/behaviors.h>
 #include <zmk/behavior.h>
 #include <zmk/battery.h>
 #include <zmk/ble.h>
